@@ -60,6 +60,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import axios, { AxiosResponse } from 'axios'
 
 // RequestFormクラスの定義
 class RequestForm {
@@ -67,6 +68,10 @@ class RequestForm {
   type = ''
   isProduction = false
   desc = ''
+}
+
+type ApiResponse = {
+  msg: string
 }
 
 // Form画面のビューモデル
@@ -77,9 +82,18 @@ export default Vue.extend({
     }
   },
   methods: {
-    onSubmit(): void {
-      alert('登録しました')
+    async onSubmit(): Promise<AxiosResponse<ApiResponse>> {
+      console.log(process.env.VUE_APP_ENDPOINT)
+      const res: AxiosResponse<ApiResponse> = await axios.post(
+        process.env.VUE_APP_ENDPOINT + '/request',
+        {
+          requestData: this.request,
+        },
+      )
+      console.log(res)
       this.request = new RequestForm()
+      alert('登録しました')
+      return res
     },
   },
 })
