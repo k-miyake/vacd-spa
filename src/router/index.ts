@@ -14,7 +14,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/form',
     name: 'form',
-    component: Form
+    component: Form,
   },
   {
     path: '/about',
