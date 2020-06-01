@@ -85,14 +85,14 @@ export default Vue.extend({
     async onSubmit(): Promise<AxiosResponse<ApiResponse>> {
       console.log(process.env.VUE_APP_ENDPOINT)
       const res: AxiosResponse<ApiResponse> = await axios.post(
-        process.env.VUE_APP_ENDPOINT + '/request',
+        process.env.VUE_APP_ENDPOINT + '/issue',
         {
-          requestData: this.request,
+          issueData: this.request,
         },
       )
       console.log(res)
       this.request = new RequestForm()
-      alert('登録しました')
+      alert(res.data.msg)
       return res
     },
   },
