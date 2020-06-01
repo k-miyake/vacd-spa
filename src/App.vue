@@ -7,6 +7,9 @@
             <router-link to="/">Home</router-link>
           </el-menu-item>
           <el-menu-item>
+            <router-link to="/form">Form</router-link>
+          </el-menu-item>
+          <el-menu-item>
             <router-link to="/about">About</router-link>
           </el-menu-item>
         </el-menu>
